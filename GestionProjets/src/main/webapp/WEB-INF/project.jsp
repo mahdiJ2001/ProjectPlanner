@@ -95,7 +95,7 @@
                 </tr>
                 <tr>
                     <td>Start Date:</td>
-                    <td><input type="text" name="startDate" value="${model.project.startDate}"  placeholder="yyyy-mm-dd"/></td>
+                    <td><input type="date" name="startDate" value="${model.project.startDate}"  placeholder="yyyy-mm-dd"/></td>
                 </tr>
                 <tr>
                     <td><input type="submit" name="action" value="Create Project" /></td>

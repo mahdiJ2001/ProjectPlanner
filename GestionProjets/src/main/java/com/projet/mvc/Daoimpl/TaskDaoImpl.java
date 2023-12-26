@@ -40,8 +40,6 @@ public class TaskDaoImpl implements TaskDao {
     }
     @Override
     public List<Task> listTasks() {
-        // Implement your logic to retrieve the list of tasks from the database
-        // For example, you can use JPQL (Java Persistence Query Language) or Criteria API
         String jpql = "SELECT t FROM Task t";
         Query query = entityManager.createQuery(jpql, Task.class);
         return query.getResultList();

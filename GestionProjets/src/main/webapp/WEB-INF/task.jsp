@@ -8,6 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/styles.css">
+    <script>
+    function validateForm() {
+        var startDate = new Date(document.forms["taskForm"]["taskStartDate"].value);
+        var endDate = new Date(document.forms["taskForm"]["taskEndDate"].value);
+
+        if (startDate >= endDate) {
+            alert("End date must be greater than the start date.");
+            return false;
+        }
+        return true;
+    }
+</script>
     <title>Task Details</title>
     <style>
         body {
@@ -84,7 +96,7 @@
 
 <div class="elementor-section elementor-top-section">
     <div class="elementor-container">
-        <form action="/GestionProjets/TaskController" method="post">
+        <form action="/GestionProjets/TaskController" method="post" name="taskForm" onsubmit="return validateForm();">
             <table border="1">
                 <tr>
                     <td>Task Code:</td>
@@ -96,11 +108,11 @@
                 </tr>
                 <tr>
                     <td>Start Date:</td>
-                    <td><input type="text" name="taskStartDate" value="${model.task.taskStartDate}" placeholder="yyyy-mm-dd"/></td>
+                    <td><input type="date" name="taskStartDate" value="${model.task.taskStartDate}" placeholder="yyyy-mm-dd"/></td>
                 </tr>
                 <tr>
                     <td>End Date:</td>
-                    <td><input type="text" name="taskEndDate" value="${model.task.taskEndDate}" placeholder="yyyy-mm-dd"/></td>
+                    <td><input type="date" name="taskEndDate" value="${model.task.taskEndDate}" placeholder="yyyy-mm-dd"/></td>
                 </tr>
                 <tr>
                     <td>Project:</td>
@@ -112,6 +124,7 @@
                         </select>
                     </td>
                 </tr>
+                
                 <tr>
                     <td><input type="submit" name="action" value="Create Task" /></td>
                     <td><input type="submit" name="action" value="Update Task" /></td>
